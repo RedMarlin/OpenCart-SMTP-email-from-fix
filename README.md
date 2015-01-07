@@ -14,5 +14,6 @@ Than this vqmod will fix it.
 #INSTALL
 Just download file for your OpenCart version and upload it to vqmod/xml directory in your Opencart installation folder.
 
+#MORE INFO
 For more info, detalied instructions, feedback and comments see here:
 http://www.expertsos.net/blog/opencart-fixing-notice-error-rcpt-to-not-accepted-from-server/
