@@ -1,0 +1,36 @@
+ 
+ <modification>
+        <id><![CDATA[Ose email correction]]></id>
+        <version><![CDATA[1]]></version>
+        <vqmver><![CDATA[1]]></vqmver>
+        <author><![CDATA[Opensource Experts]]></author>
+        <file path="system/library/" name="mail.php">
+                <operation>
+                        <search position="replace"><![CDATA[
+			 $header .= 'Reply-To: =?UTF-8?B?' . base64_encode($this->replyto) . '?=' . ' <' . $this->from . '>' . $this->newline;
+			  ]]></search>
+                        <add><![CDATA[
+			  $header .= 'Reply-To: =?UTF-8?B?' . base64_encode($this->replyto) . '?=' . ' <' . $this->replyto . '>' . $this->newline;
+			  ]]></add>
+                </operation>
+        </file>
+	<file path="catalog/controller/information/" name="contact.php">
+                <operation>
+                        <search position="replace"><![CDATA[
+			$mail->setFrom($this->request->post['email']);
+			  ]]></search>
+                        <add><![CDATA[
+			 $mail->setFrom($this->config->get('config_email'));
+			  ]]></add>
+		      </operation>
+		      <operation>
+			<search position="replace"><![CDATA[
+			$mail->setSender($this->request->post['name']);
+			  ]]></search>
+                        <add><![CDATA[
+			 $mail->setSender($this->config->get('config_email'));
+			 $mail->setReplyTo($this->request->post['email']);
+			  ]]></add>
+                </operation>
+        </file>
+</modification>
