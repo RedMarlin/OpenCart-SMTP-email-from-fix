@@ -35,23 +35,86 @@
                 </operation>
         </file>
         <file name="catalog/controller/information/contact.php">
-                <operation>
+              <operation>
                         <search position="replace"><![CDATA[
                         $mail->setFrom($this->request->post['email']);
                           ]]></search>
                         <add><![CDATA[
-                         $mail->setFrom($this->config->get('config_email'));
+                          if($this->config->get('config_mail_protocol') == 'smtp') {
+                            $mail->setFrom($this->config->get('config_smtp_emailaccount')); 
+                          } 
+                         else { $mail->setFrom($this->config->get('config_email')); }
                           ]]></add>
-                      </operation>
- <operation>
-                        <search position="replace"><![CDATA[
+              </operation>
+              <operation>
+                        <search position="replace"><![CDATA[ 
                         $mail->setSender($this->request->post['name']);
                           ]]></search>
                         <add><![CDATA[
-                         $mail->setSender($this->config->get('config_email'));
-                         $mail->setReplyTo($this->request->post['email']);
+                          if($this->config->get('config_mail_protocol') == 'smtp') {
+                            $mail->setSender($this->config->get('config_smtp_emailaccount')); 
+                          } 
+                          else { $mail->setSender($this->config->get('config_email')); }
+                          $mail->setReplyTo($this->request->post['email']);
                           ]]></add>
-                </operation>
+              </operation>
+        </file>
+        <file name="admin/view/template/setting/setting.tpl">
+              <operation>
+                  <search position="after" offset="1">
+                    <![CDATA[<td><input type="text" name="config_smtp_timeout" value="<?php echo $config_smtp_timeout; ?>" /></td>
+                     ]]>
+                  </search>
+                  <add>
+                     <![CDATA[
+                     <tr>
+                        <td><?php echo $entry_smtp_emailaccount; ?></td>
+                        <td><input type="text" name="config_smtp_emailaccount" value="<?php echo $config_smtp_emailaccount; ?>" /></td>
+                      </tr>
+                     ]]>
+                  </add>
+              </operation>
+        </file>
+         <file name="admin/controller/setting/setting.php">
+              <operation>
+                  <search position="after">
+                    <![CDATA[
+                      $this->data['entry_smtp_timeout'] = $this->language->get('entry_smtp_timeout');
+                     ]]>
+                  </search>
+                  <add>
+                     <![CDATA[$this->data['entry_smtp_emailaccount'] = $this->language->get('entry_smtp_emailaccount');
+                     ]]>
+                  </add>
+              </operation>
+              <operation>
+                  <search position="before">
+                    <![CDATA[ if (isset($this->request->post['config_alert_mail'])) { ]]>
+                  </search>
+                  <add>
+                     <![CDATA[
+                      if (isset($this->request->post['config_smtp_emailaccount'])) {
+                          $this->data['config_smtp_emailaccount'] = $this->request->post['config_smtp_emailaccount'];
+                      } elseif ($this->config->get('config_smtp_emailaccount')) {
+                        $this->data['config_smtp_emailaccount'] = $this->config->get('config_smtp_emailaccount');
+                      } else {
+                        $this->data['config_smtp_emailaccount'] = $this->config->get('config_email'); 
+                      } 
+                     ]]>
+                  </add>
+              </operation>
+        </file>
+         <file name="admin/language/setting/setting.php">
+              <operation>
+                  <search position="after">
+                    <![CDATA[$_['entry_smtp_timeout']           = 'SMTP Timeout:';
+                     ]]>
+                  </search>
+                  <add>
+                     <![CDATA[$_['entry_smtp_emailaccount']      = 'SMTP Email Address:';
+                     ]]>
+                  </add>
+              </operation>
         </file>
 </modification>
 
