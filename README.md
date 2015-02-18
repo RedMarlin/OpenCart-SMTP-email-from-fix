@@ -19,4 +19,4 @@ ose_mail_oc2.xml is for Opencart 2.0 or higher
 
 #MORE INFO
 For more info, detalied instructions, feedback and comments see here:
-http://www.expertsos.net/blog/opencart-fixing-notice-error-rcpt-to-not-accepted-from-server/
+http://www.expertsos.net/blog/opencart-fixing-notice-error-rcpt-to-not-accepted-from-server-vqmod/
