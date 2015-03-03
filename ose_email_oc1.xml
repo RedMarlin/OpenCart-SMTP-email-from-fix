@@ -104,7 +104,7 @@
                   </add>
               </operation>
         </file>
-         <file name="admin/language/setting/setting.php">
+         <file name="admin/language/english/setting/setting.php">
               <operation>
                   <search position="after">
                     <![CDATA[$_['entry_smtp_timeout']           = 'SMTP Timeout:';
