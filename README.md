@@ -1,5 +1,5 @@
 
-#UPDATE 13-02-2014
+#UPDATE 13-02-2015
 Version  0.2 of our module released
 
 – Added field in Mail tab that lets you configure smtp account for sending mails independently from your store main email
