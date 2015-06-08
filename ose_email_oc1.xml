@@ -2,7 +2,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
  <modification>
         <id><![CDATA[Ose email correction]]></id>
-        <version><![CDATA[1]]>0.1</version>
+        <version><![CDATA[1]]>0.2.1</version>
         <author><![CDATA[Opensource Experts]]></author>
         <file name="system/library/mail.php">
                 <operation>
