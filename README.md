@@ -1,4 +1,8 @@
 
+#UPDATE 08-06-2015
+Version 0.2.1 of our module released
+– Fixed Reply-to bug when receiving new order alerts (Thanks to Fayez Saidawi for pointing this out)
+
 #UPDATE 13-02-2015
 Version  0.2 of our module released
 
