@@ -1,7 +1,7 @@
  
  <modification>
         <id><![CDATA[Ose email correction]]></id>
-        <version><![CDATA[1]]>0.2</version>
+        <version><![CDATA[1]]>0.2.1</version>
         <vqmver><![CDATA[1]]></vqmver>
         <author><![CDATA[Opensource Experts]]></author>
         <file path="system/library/" name="mail.php">
@@ -13,6 +13,15 @@
                 <add><![CDATA[
 			  		$header .= 'Reply-To: =?UTF-8?B?' . base64_encode($this->replyto) . '?=' . ' <' . $this->replyto . '>' . $this->newline;
 			  ]]></add>
+             </operation>
+             <operation>
+                <search position="replace"><![CDATA[
+                  $this->setReplyTo($this->sender);
+            ]]>
+          </search>
+                <add><![CDATA[
+            $this->setReplyTo($this->from);         
+        ]]></add>
              </operation>
         </file>
 		<file path="catalog/controller/information/" name="contact.php">
