@@ -30,7 +30,9 @@
                          $header .= 'Reply-To: ' . '=?UTF-8?B?' . base64_encode($this->sender) . '?=' . ' <' . $this->from . '>' . $this->newline;
                           ]]></search>
                         <add><![CDATA[
+                        if ($this->replyto){
                           $header .= 'Reply-To: =?UTF-8?B?' . base64_encode($this->replyto) . '?=' . ' <' . $this->replyto . '>' . $this->newline;
+                          }
                           ]]></add>
                 </operation>
         </file>
